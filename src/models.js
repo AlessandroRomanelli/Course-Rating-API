@@ -1,9 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
   fullName: {
@@ -94,8 +94,6 @@ var ReviewSchema = new Schema({
   },
   review: String
 });
-
-
 
 var StepSchema = new Schema({
     stepNumber: Number,

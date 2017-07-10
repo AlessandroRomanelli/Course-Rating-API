@@ -92,7 +92,8 @@ router.put('/courses/:courseId', (req, res, next) => {
     if (err) {return next(err)};
     Course.findById(req.params.courseId)
     .exec((err, course) => {
-      if (err) {
+      if (err || !course) {
+        var err = new Error();
         err.message = "Couldn't find any courses matching this ID: " + req.params.courseId;
         err.status = 404;
         return next(err);

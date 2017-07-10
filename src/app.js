@@ -1,17 +1,13 @@
 'use strict';
 
 // load modules
-var   express    = require('express');
-var   morgan     = require('morgan');
-var   mongoose   = require('mongoose');
-var   seeder     = require('mongoose-seeder');
-var   data       = require('./data/data.json');
-var   routes     = require('./routes/index.js');
-var   jsonParser = require('body-parser').json;
-var   session    = require('express-session');
-var   MongoStore = require('connect-mongo')(session);
-
-
+const   express    = require('express');
+const   morgan     = require('morgan');
+const   mongoose   = require('mongoose');
+const   seeder     = require('mongoose-seeder');
+const   data       = require('./data/data.json');
+const   routes     = require('./routes/index.js');
+const   jsonParser = require('body-parser').json;
 
 var app = express();
 
@@ -28,15 +24,6 @@ db.on('error', err => {
   console.log(err.message);
   process.exit(1);
 });
-
-app.use(session({
-  secret: 'My secret secret',
-  resave: true,
-  saveUninitialized: false,
-  store: new MongoStore({
-    mongooseConnection: db
-  })
-}));
 
 // set our port
 app.set('port', process.env.PORT || 5000);
