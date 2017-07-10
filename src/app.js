@@ -11,7 +11,7 @@ const   jsonParser = require('body-parser').json;
 
 var app = express();
 
-mongoose.connect("mongodb://localhost:27017/courses");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/courses");
 var db = mongoose.connection;
 
 db.on('open', () => {
